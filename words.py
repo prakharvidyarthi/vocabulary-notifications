@@ -28,10 +28,6 @@ for i in range(1,15):
 while(1):
 	i = randint(0,len(word)-1)
 
-	message("New word",word[i])
-
-	time.sleep(15)
-
 	message("Word : " + word[i],meaning[i])
 
 	time.sleep(300)
