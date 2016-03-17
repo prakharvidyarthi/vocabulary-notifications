@@ -7,27 +7,28 @@ import time
 def message(title, message):
   os.system('notify-send "'+title+'" "'+message+'"')
 
-page = urllib2.urlopen('https://www.vocabulary.com/lists/197265#view=notes').read();
-
-parsed = BeautifulSoup(page)
-
 word = []
 meaning = []
 
-site_meanings = parsed.find_all("div" , class_="definition")
+for i in range(1,15):
+	page = urllib2.urlopen('http://www.majortests.com/gre/wordlist_0' + str(i)).read();
 
-site_words = parsed.find_all("a",class_="word dynamictext")
+	parsed = BeautifulSoup(page)
 
-print(site_words)
+	site_meanings = parsed.find_all("td")
 
-for site_word in site_words:
-	word.append(site_word.get_text().encode("utf-8"))
+	site_words = parsed.find_all("th")
 
-for site_meaning in site_meanings:
-	meaning.append(site_meaning.get_text().encode("utf-8"))
+	for site_word in site_words:
+		word.append(site_word.get_text().encode("utf-8"))
+
+	for site_meaning in site_meanings:
+		meaning.append(site_meaning.get_text().encode("utf-8"))
+
+print(len(word))
 
 while(1):
-	i = randint(0,90)
+	i = randint(0,len(word)-1)
 
 	message("New word",word[i])
 
@@ -35,4 +36,4 @@ while(1):
 
 	message("Word : " + word[i],meaning[i])
 
-	time.sleep(600)
+	time.sleep(300)
