@@ -25,8 +25,6 @@ for i in range(1,15):
 	for site_meaning in site_meanings:
 		meaning.append(site_meaning.get_text().encode("utf-8"))
 
-print(len(word))
-
 while(1):
 	i = randint(0,len(word)-1)
 
