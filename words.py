@@ -13,7 +13,7 @@ meaning = []
 for i in range(1,15):
 	page = urllib2.urlopen('http://www.majortests.com/gre/wordlist_0' + str(i)).read();
 
-	parsed = BeautifulSoup(page)
+	parsed = BeautifulSoup(page, "lxml")
 
 	site_meanings = parsed.find_all("td")
 
@@ -30,4 +30,4 @@ while(1):
 
 	message("Word : " + word[i],meaning[i])
 
-	time.sleep(300)
+	time.sleep(30)
