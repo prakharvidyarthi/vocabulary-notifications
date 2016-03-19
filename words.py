@@ -30,4 +30,4 @@ while(1):
 
 	message("Word : " + word[i],meaning[i])
 
-	time.sleep(30)
+	time.sleep(120)
